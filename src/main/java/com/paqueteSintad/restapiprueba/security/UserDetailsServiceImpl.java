@@ -18,9 +18,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
   @Override
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    Map<String,String > usuario = new HashMap<>();
-    usuario.put("user",this.userCredential);
-    usuario.put("pswd",this.pswdCredentials);
+    Map<String, String> usuario = new HashMap<>();
+    if(this.userCredential.equals(username)) {
+      usuario.put("user", this.userCredential);
+      usuario.put("pswd", this.pswdCredentials);
+    }
     return new UserDetailsImpl(usuario);
   }
 }

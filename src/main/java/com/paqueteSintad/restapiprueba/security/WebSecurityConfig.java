@@ -28,6 +28,7 @@ public class WebSecurityConfig {
 
     return http
       .csrf().disable()
+      .cors().and()
       .authorizeRequests()
       .anyRequest()
       .authenticated()
@@ -42,16 +43,6 @@ public class WebSecurityConfig {
       .build();
   }
 
-//  @Bean
-//  UserDetailsService userDetailsService(){
-//    InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
-//    manager.createUser(User.withUsername("ADMIN")
-//      .password(passwordEncoder().encode("admin"))
-//      .roles()
-//      .build());
-//    return manager;
-//  }
-
   @Bean
   PasswordEncoder passwordEncoder(){
     return new BCryptPasswordEncoder();
@@ -65,4 +56,5 @@ public class WebSecurityConfig {
       .and()
       .build();
   }
+
 }
