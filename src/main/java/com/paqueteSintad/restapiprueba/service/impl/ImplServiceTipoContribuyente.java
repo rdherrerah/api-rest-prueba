@@ -31,14 +31,17 @@ public class ImplServiceTipoContribuyente implements ServiceTipoContribuyente {
 
   @Override
   public TipoContribuyente updateTipoContribuyente(Integer id, TipoContribuyente tipoContribuyente) {
+
     TipoContribuyente newTipoContribuyente = iTipoContribuyenteDAO.findById(id).orElse(null);
-    if(newTipoContribuyente!=null) {
+    if (newTipoContribuyente != null) {
       newTipoContribuyente.setEstado(tipoContribuyente.getEstado() == null ? newTipoContribuyente.getEstado() : tipoContribuyente.getEstado());
       newTipoContribuyente.setNombre(tipoContribuyente.getNombre() == null ? newTipoContribuyente.getNombre() : tipoContribuyente.getNombre());
-      iTipoContribuyenteDAO.deleteById(id);
-      return iTipoContribuyenteDAO.save(newTipoContribuyente);
-    }
-    else return null;
+      iTipoContribuyenteDAO.updateTipoContribuyenteById(
+        newTipoContribuyente.getNombre(),
+        newTipoContribuyente.getEstado(),
+        id);
+      return newTipoContribuyente;
+    } else return null;
   }
 
   @Override

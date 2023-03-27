@@ -23,6 +23,16 @@ public class EntidadController {
     return serviceEntidad.getEntidadById(id);
   }
 
+  @GetMapping("/find/documento/{nroDocumento}")
+  public Entidad getTipoDocumentoByNroDocumento(@PathVariable String nroDocumento){
+    return serviceEntidad.getEntidadByNroDocumento(nroDocumento);
+  }
+
+  @GetMapping("/find/information/{information}")
+  public List<Entidad> getTipoDocumentoByInformation(@PathVariable String information){
+    return serviceEntidad.getEntidadByInformation(information);
+  }
+
   @PutMapping("/add")
   public Entidad saveEntidad(@RequestBody Entidad entidad) {
     return serviceEntidad.saveEntidad(entidad);

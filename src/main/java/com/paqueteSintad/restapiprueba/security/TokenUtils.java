@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class TokenUtils {
   private static final String ACCESS_TOKEN_SECRET = "Um9ubnkgaG9sYSBxdWUgdGFsIGVzdGFtb3MgcHJvYmFuZG8";
-  private static final Long ACCESS_TOKEN_VALIDITY_SECOND = 3600L;
+  private static final Long ACCESS_TOKEN_VALIDITY_SECOND = 300L;
 
   public static String createToken(String user, String pswd){
     long expirationTime = ACCESS_TOKEN_VALIDITY_SECOND*1000;

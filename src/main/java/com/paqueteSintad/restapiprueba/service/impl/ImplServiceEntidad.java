@@ -28,6 +28,21 @@ public class ImplServiceEntidad implements ServiceEntidad {
   }
 
   @Override
+  public Entidad getEntidadByNroDocumento(String nroDocumento) {
+    return entidadDao.findByNroDocumento(nroDocumento).orElse(null);
+  }
+
+  public List<Entidad> getEntidadByInformation(String information) {
+    return (List<Entidad>) entidadDao.findByInformation(
+      information,
+      information,
+      information,
+      information,
+      information
+    );
+  }
+
+  @Override
   public Entidad updateEntidad(Integer id, Entidad entidad) {
     Entidad newEntidad = entidadDao.findById(id).orElse(null);
     if (newEntidad != null) {

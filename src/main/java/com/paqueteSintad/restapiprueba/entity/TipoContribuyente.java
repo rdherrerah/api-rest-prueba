@@ -4,10 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "tb_tipo_contribuyente")
@@ -17,9 +14,10 @@ import javax.persistence.Table;
 public class TipoContribuyente {
   @Id
   @Column(name = "id_tipo_contribuyente")
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idTipoContribuyente;
   @Column(name = "nombre")
   private String nombre;
   @Column(name = "estado")
-  private Character estado;
+  private Boolean estado;
 }

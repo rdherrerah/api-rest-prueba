@@ -9,6 +9,10 @@ public interface ServiceEntidad {
 
   public Entidad getEntidadById(Integer id);
 
+  public Entidad getEntidadByNroDocumento(String nroDocumento);
+
+  public List<Entidad> getEntidadByInformation(String information);
+
   public Entidad saveEntidad(Entidad entidad);
 
   public Entidad updateEntidad(Integer id, Entidad entidad);

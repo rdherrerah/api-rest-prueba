@@ -36,8 +36,13 @@ public class ImplServiceTipoDocumento implements ServiceTipoDocumento {
       newTipoDocumento.setDescripcion(tipoDocumento.getDescripcion()==null?newTipoDocumento.getDescripcion():tipoDocumento.getDescripcion());
       newTipoDocumento.setEstado(tipoDocumento.getEstado()==null?newTipoDocumento.getEstado():tipoDocumento.getEstado());
       newTipoDocumento.setNombre(tipoDocumento.getNombre()==null?newTipoDocumento.getNombre():tipoDocumento.getNombre());
-      iTipoDocumentoDAO.deleteById(id);
-      return iTipoDocumentoDAO.save(newTipoDocumento);
+      iTipoDocumentoDAO.updateTipoDocumentoById(
+        newTipoDocumento.getCodigo(),
+        newTipoDocumento.getNombre(),
+        newTipoDocumento.getDescripcion(),
+        newTipoDocumento.getEstado(),
+        id);
+      return newTipoDocumento;
     }
     else return null;
   }
