@@ -1,25 +1,28 @@
 package com.paquetesintad.restapiprueba.service;
 
 import com.paquetesintad.restapiprueba.entity.Entidad;
+import com.paquetesintad.restapiprueba.model.request.EntidadRequest;
+import com.paquetesintad.restapiprueba.model.request.EntidadRequestUpdate;
+import com.paquetesintad.restapiprueba.model.response.EntidadResponse;
 import org.springframework.data.domain.Page;
 
 import java.util.List;
 
 public interface ServiceEntidad {
 
-  public List<Entidad> getAllEntidad();
+  public List<EntidadResponse> getAllEntidad();
 
-  public Page<Entidad> getAllEntidadPage(Integer page);
+  public Page<EntidadResponse> getAllEntidadPage(Integer page);
 
-  public Entidad getEntidadById(Integer id);
+  public EntidadResponse getEntidadById(Integer id);
 
-  public Entidad getEntidadByNroDocumento(String nroDocumento);
+  public EntidadResponse getEntidadByNroDocumento(String nroDocumento);
 
-  public List<Entidad> getEntidadByInformation(String information);
+  public List<EntidadResponse> getEntidadByInformation(String information);
 
-  public Entidad saveEntidad(Entidad entidad);
+  public EntidadResponse saveEntidad(EntidadRequest entidadRequest);
 
-  public Entidad updateEntidad(Integer id, Entidad entidad);
+  public EntidadResponse updateEntidad(Integer id, EntidadRequestUpdate entidadRequestUpdate);
 
   public void deleteEntidad(Integer id);
 }

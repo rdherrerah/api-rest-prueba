@@ -19,6 +19,11 @@ public class WebSecurityConfig {
 
   private final UserDetailsService userDetailsService;
   private final JwtAuthorizationFilter jwtAuthorizationFilter;
+  public static final String[] PUBLIC_PATHS = {"/api/auth/**",
+    "/v3/api-docs.yaml",
+    "/v3/api-docs/**",
+    "/swagger-ui/**",
+    "/swagger-ui.html"};
 
   @Bean
   SecurityFilterChain filterChain(HttpSecurity http, AuthenticationManager authManager) throws Exception{
@@ -29,7 +34,7 @@ public class WebSecurityConfig {
     return http
       .csrf().disable()
       .cors().and()
-      .authorizeRequests()
+      .authorizeRequests().antMatchers("/swagger-ui.html", "/swagger-ui/**", "/swagger-resources/**", "/swagger-resources", "/v3/api-docs/**", "/proxy/**").permitAll()
       .anyRequest()
       .authenticated()
       .and()
