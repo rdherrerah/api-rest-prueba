@@ -4,6 +4,7 @@ import com.paquetesintad.restapiprueba.entity.Entidad;
 import com.paquetesintad.restapiprueba.service.ServiceEntidad;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -16,6 +17,11 @@ public class EntidadController {
   @GetMapping("")
   public List<Entidad> getAllEntidad() {
     return serviceEntidad.getAllEntidad();
+  }
+
+  @GetMapping("/page/{page}")
+  public Page<Entidad> getAllEntidadPage(@PathVariable Integer page) {
+    return serviceEntidad.getAllEntidadPage(page);
   }
 
   @GetMapping("/find/{id}")

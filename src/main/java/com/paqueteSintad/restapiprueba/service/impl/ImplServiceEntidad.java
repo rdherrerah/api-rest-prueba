@@ -1,20 +1,32 @@
 package com.paquetesintad.restapiprueba.service.impl;
 
 import com.paquetesintad.restapiprueba.dao.EntidadDao;
+import com.paquetesintad.restapiprueba.dao.EntidadPaginableDao;
 import com.paquetesintad.restapiprueba.entity.Entidad;
 import com.paquetesintad.restapiprueba.service.ServiceEntidad;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ImplServiceEntidad implements ServiceEntidad {
   @Autowired
   EntidadDao entidadDao;
+  @Autowired
+  EntidadPaginableDao entidadPaginableDao;
 
   @Override
   public List<Entidad> getAllEntidad() {
     return (List<Entidad>) entidadDao.findAll();
+  }
+
+  @Override
+  public Page<Entidad> getAllEntidadPage(Integer page) {
+    Pageable numberPage = PageRequest.of(page-1,8);
+    return entidadPaginableDao.findAll(numberPage);
   }
 
   @Override

@@ -1,11 +1,15 @@
 package com.paquetesintad.restapiprueba.service;
 
 import com.paquetesintad.restapiprueba.entity.Entidad;
+import org.springframework.data.domain.Page;
+
 import java.util.List;
 
 public interface ServiceEntidad {
 
   public List<Entidad> getAllEntidad();
+
+  public Page<Entidad> getAllEntidadPage(Integer page);
 
   public Entidad getEntidadById(Integer id);
 
